@@ -9,14 +9,20 @@ import { BsList } from "react-icons/bs";
 import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import MobileNavListItem from "../components/mobileListItem";
 
 export default function Home() {
   const [currentTab, setCurrentTab] = useState("Home");
+  const [showSidebar, setShowSidebar] = useState(false);
 
   const changeTab = (newTab) => {
     setCurrentTab(newTab);
+    setShowSidebar(false);
   };
 
+  const toggleSidebar = () => {
+    setShowSidebar((showSidebar) => !showSidebar);
+  };
   return (
     <Fragment>
       <Container fluid className="pt-3 d-none d-md-block">
@@ -90,8 +96,10 @@ export default function Home() {
             <Services />
           ) : currentTab === "Archive" ? (
             <Archive />
-          ) : (
+          ) : currentTab === "Contact" ? (
             <ContactForm />
+          ) : (
+            ""
           )}
         </Row>
         <Row className={styles.footer}>
@@ -107,8 +115,43 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="pt-1 pb-3 d-md-none">
-        <Row className={`d-md-none ${styles.mobileNavbar}`}>
+      <Container fluid className="pt-1 d-md-none d-flex flex-column">
+        {showSidebar && (
+          <div onClick={toggleSidebar} className={styles.overlay}></div>
+        )}
+
+        {showSidebar && (
+          <div className={styles.sideBarContainer}>
+            <ul>
+              <MobileNavListItem
+                currentTab={currentTab}
+                changeTab={changeTab}
+                setShowSidebar={setShowSidebar}
+                name={"Services"}
+              />
+              <MobileNavListItem
+                currentTab={currentTab}
+                changeTab={changeTab}
+                name={"Archive"}
+                setShowSidebar={setShowSidebar}
+              />
+              <MobileNavListItem
+                currentTab={currentTab}
+                changeTab={changeTab}
+                name={"Contact"}
+                setShowSidebar={setShowSidebar}
+              />
+              <MobileNavListItem
+                currentTab={currentTab}
+                changeTab={changeTab}
+                name={"MoodBoard"}
+                setShowSidebar={setShowSidebar}
+              />
+            </ul>
+          </div>
+        )}
+
+        <Row className={`d-md-none mb-3 ${styles.mobileNavbar}`}>
           <Col className={styles.mobileNavbarColumn}>
             <div>
               <Image
@@ -120,7 +163,7 @@ export default function Home() {
               />
             </div>
             <div>
-              <BsList size="30" color="#ff1493" />
+              <BsList onClick={toggleSidebar} size="30" color="#ff1493" />
             </div>
           </Col>
         </Row>
@@ -153,8 +196,10 @@ export default function Home() {
             <Services />
           ) : currentTab === "Archive" ? (
             <Archive />
-          ) : (
+          ) : currentTab === "Contact" ? (
             <ContactForm />
+          ) : (
+            ""
           )}
         </Row>
         <Row className={styles.footer}>

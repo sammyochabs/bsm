@@ -12,7 +12,6 @@ export default function Archive() {
           return (
             <Col key={key} md={4} className={styles.imageColumn}>
               <Image
-                // layout="fill"
                 width="400"
                 height="400"
                 className={styles.archiveImage}

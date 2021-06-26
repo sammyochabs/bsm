@@ -4,7 +4,7 @@ import styles from "../styles/form.module.css";
 
 export default function ContactForm() {
   return (
-    <Col>
+    <Col className="mt-5">
       <form className={`${styles.formContainer} d-flex flex-column`}>
         <input type="email" placeholder="EMAIL" />
         <input type="text" placeholder="PHONE NUMBER" />
