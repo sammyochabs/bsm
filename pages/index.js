@@ -7,6 +7,8 @@ import Archive from "../components/archive";
 import ContactForm from "../components/contactForm";
 import { BsList } from "react-icons/bs";
 import { Fragment } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [currentTab, setCurrentTab] = useState("Home");
@@ -18,16 +20,6 @@ export default function Home() {
   return (
     <Fragment>
       <Container fluid className="pt-3 d-none d-md-block">
-        <Row className={`d-md-none ${styles.mobileNavbar}`}>
-          <Col className={styles.mobileNavbarColumn}>
-            <div>
-              <img className={styles.mobileLogo} src="bsmLogo.png" />
-            </div>
-            <div>
-              <BsList size="30" color="#ff1493" />
-            </div>
-          </Col>
-        </Row>
         <Row>
           <Col md={{ span: "4", offset: "8" }}>
             <label className={styles.newsletterLabel}>
@@ -46,15 +38,18 @@ export default function Home() {
             className={`${styles.navColumn}  d-flex flex-column justify-content-center  `}
           >
             <div onClick={() => changeTab("Home")}>
-              <a href="/">
-                <img
+              <Link href="/">
+                <Image
+                  // layout="fill"
+                  width="200"
+                  height="20"
                   className={styles.logo}
                   src={
-                    currentTab === "Home" ? "bsmLogo.png" : "inactiveLogo.png"
+                    currentTab === "Home" ? "/bsmLogo.png" : "/inactiveLogo.png"
                   }
                   alt=""
                 />
-              </a>
+              </Link>
             </div>
             <ul className={styles.navList}>
               <NavListItem
@@ -87,7 +82,7 @@ export default function Home() {
               <div className={styles.videoContainer}>
                 <video className={styles.video} muted autoPlay>
                   <source src="bgVideo.mp4" type="video/webm" />
-                  Sorry, your browser doesn't support embedded videos.
+                  Sorry, your browser does not support embedded videos.
                 </video>
               </div>
             </Col>
@@ -116,7 +111,13 @@ export default function Home() {
         <Row className={`d-md-none ${styles.mobileNavbar}`}>
           <Col className={styles.mobileNavbarColumn}>
             <div>
-              <img className={styles.mobileLogo} src="bsmLogo.png" />
+              <Image
+                width="200"
+                height="20"
+                className={styles.mobileLogo}
+                src="/bsmLogo.png"
+                alt=""
+              />
             </div>
             <div>
               <BsList size="30" color="#ff1493" />
@@ -144,7 +145,7 @@ export default function Home() {
               <div className={styles.videoContainer}>
                 <video className={styles.video} muted autoPlay>
                   <source src="bgVideo.mp4" type="video/webm" />
-                  Sorry, your browser doesn't support embedded videos.
+                  Sorry, your browser does not support embedded videos.
                 </video>
               </div>
             </Col>
