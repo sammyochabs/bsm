@@ -75,10 +75,13 @@
 }
 .video {
   max-width: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
   z-index: -1;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 .copyright,
 .infoEmail {
