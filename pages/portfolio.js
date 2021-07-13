@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import Archive from "../components/archive";
 import Header from "../components/Header";
@@ -11,8 +11,7 @@ import Image from "next/image";
 import { BsList } from "react-icons/bs";
 import MobileNavListItem from "../components/mobileListItem";
 
-const PortfolioPage = ({ imagesUrl }) => {
-  imagesUrl = JSON.parse(imagesUrl);
+const PortfolioPage = () => {
   const [currentTab, setCurrentTab] = useState("Archive");
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -24,6 +23,7 @@ const PortfolioPage = ({ imagesUrl }) => {
     setCurrentTab(newTab);
     setShowSidebar(false);
   };
+
   return (
     <Fragment>
       {showSidebar && (
@@ -84,19 +84,11 @@ const PortfolioPage = ({ imagesUrl }) => {
       <Header />
       <Row className="pl-4">
         <SideBar currentTab={currentTab} changeTab={changeTab} />
-        <Archive imagesUrl={imagesUrl} />
+        <Archive />
       </Row>
       <Footer />
     </Fragment>
   );
-};
-
-PortfolioPage.getInitialProps = async ({ req }) => {
-  const imagesUrl = cookie.parse(
-    req ? req.headers.cookie || "" : document.cookie
-  );
-
-  return { imagesUrl: imagesUrl.imagesUrl };
 };
 
 export default PortfolioPage;

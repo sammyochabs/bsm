@@ -11,7 +11,7 @@ const Footer = () => {
           &copy; BSM 2020
         </Col>
         <Col className={styles.infoEmail} md={{ span: "2" }}>
-          <div className={`${styles.instaLinkText} ml-`}>
+          <div className={`${styles.instaLinkText} ml-5`}>
             <span className={styles.instaLink}>
               <Link href={"https://Instagram.com/bs______m"}>@bs____m</Link>
             </span>
