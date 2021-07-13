@@ -1,9 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function NavListItem({ name, changeTab, currentTab }) {
+export default function NavListItem({ name, changeTab, currentTab, page }) {
   const [showArrow, setshowArrow] = useState(false);
+
+  const router = useRouter();
 
   const handleMouseOver = () => {
     setshowArrow(true);
@@ -13,9 +17,13 @@ export default function NavListItem({ name, changeTab, currentTab }) {
     setshowArrow(false);
   };
 
+  const handleClick = (link) => {
+    router.push(`/${link}`);
+  };
+
   return (
     <li
-      onClick={() => changeTab(name)}
+      onClick={() => handleClick(page)}
       onMouseOut={handleMouseOut}
       onMouseOver={handleMouseOver}
     >

@@ -45,3 +45,7 @@ export const archiveImages = [
     imageUrl: "archive15.jpg",
   },
 ];
+
+// if (typeof window !== "undefined") {
+//   window.localStorage.setItem("imagesUrl", JSON.stringify(archiveImages));
+// }

@@ -10,6 +10,9 @@ import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MobileNavListItem from "../components/mobileListItem";
+import Header from "../components/Header";
+import SideBar from "../components/SideBar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [currentTab, setCurrentTab] = useState("Home");
@@ -25,72 +28,20 @@ export default function Home() {
   };
   return (
     <Fragment>
-      <Container fluid className="pt-3 d-none d-md-block">
+      <Container fluid className="pt-1 d-none d-md-block">
+        <Header />
         <Row>
-          <Col md={{ span: "4", offset: "8" }}>
-            <label className={styles.newsletterLabel}>
-              Subscribe To Our Newsletter:
-            </label>
-            <input
-              placeholder="Email Here"
-              className={styles.newsletterInput}
-              type="email"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col
-            md={3}
-            className={`${styles.navColumn}  d-flex flex-column justify-content-center  `}
-          >
-            <div onClick={() => changeTab("Home")}>
-              <Link href="/">
-                <Image
-                  // layout="fill"
-                  width="200"
-                  height="20"
-                  className={styles.logo}
-                  src={
-                    currentTab === "Home" ? "/bsmLogo.png" : "/inactiveLogo.png"
-                  }
-                  alt=""
-                />
-              </Link>
-            </div>
-            <ul className={styles.navList}>
-              <NavListItem
-                currentTab={currentTab}
-                changeTab={changeTab}
-                name={"Services"}
-              />
-              <NavListItem
-                currentTab={currentTab}
-                changeTab={changeTab}
-                name={"Archive"}
-              />
-              <NavListItem
-                currentTab={currentTab}
-                changeTab={changeTab}
-                name={"Contact"}
-              />
-              <NavListItem
-                currentTab={currentTab}
-                changeTab={changeTab}
-                name={"MoodBoard"}
-              />
-            </ul>
-          </Col>
+          <video className={styles.video} muted autoPlay>
+            <source src="bgVideo.mp4" type="video/webm" />
+            Sorry, your browser does not support embedded videos.
+          </video>
+          <SideBar currentTab={currentTab} changeTab={changeTab} />
           {currentTab === "Home" ? (
             <Col
               className={`${styles.newletterInputContainer} d-flex flex-column`}
               md={9}
             >
-              <div className={styles.videoContainer}>
-                <video className={styles.video} muted autoPlay>
-                  <source src="bgVideo.mp4" type="video/webm" />
-                  Sorry, your browser does not support embedded videos.
-                </video>
-              </div>
+              <div className={styles.videoContainer}></div>
             </Col>
           ) : currentTab === "Services" ? (
             <Services />
@@ -102,18 +53,7 @@ export default function Home() {
             ""
           )}
         </Row>
-        <Row className={styles.footer}>
-          <Col className={styles.copyright} md={{ span: "4", offset: "6" }}>
-            &copy; BSM 2020
-          </Col>
-          <Col className={styles.infoEmail} md={{ span: "2" }}>
-            <div className="ml-5">
-              <span>@bs____m</span>
-              <br />
-              info@bs-m.la
-            </div>
-          </Col>
-        </Row>
+        <Footer />
       </Container>
       <Container fluid className="pt-1 d-md-none d-flex flex-column">
         {showSidebar && (
@@ -128,24 +68,28 @@ export default function Home() {
                 changeTab={changeTab}
                 setShowSidebar={setShowSidebar}
                 name={"Services"}
+                page={"services"}
               />
               <MobileNavListItem
                 currentTab={currentTab}
                 changeTab={changeTab}
                 name={"Archive"}
                 setShowSidebar={setShowSidebar}
+                page={"portfolio"}
               />
               <MobileNavListItem
                 currentTab={currentTab}
                 changeTab={changeTab}
                 name={"Contact"}
                 setShowSidebar={setShowSidebar}
+                page={"contact"}
               />
               <MobileNavListItem
                 currentTab={currentTab}
                 changeTab={changeTab}
                 name={"MoodBoard"}
                 setShowSidebar={setShowSidebar}
+                page={"moodboard"}
               />
             </ul>
           </div>
@@ -183,7 +127,7 @@ export default function Home() {
           {currentTab === "Home" ? (
             <Col
               className={`${styles.newletterInputContainer} d-flex flex-column`}
-              md={9}
+              md={12}
             >
               <div className={styles.videoContainer}>
                 <video className={styles.video} muted autoPlay>
@@ -202,18 +146,7 @@ export default function Home() {
             ""
           )}
         </Row>
-        <Row className={styles.footer}>
-          <Col className={styles.copyright} md={{ span: "4", offset: "6" }}>
-            &copy; BSM 2020
-          </Col>
-          <Col className={styles.infoEmail} md={{ span: "2" }}>
-            <div className="ml-5">
-              <span>@bs____m</span>
-              <br />
-              info@bs-m.la
-            </div>
-          </Col>
-        </Row>
+        <Footer />
       </Container>
     </Fragment>
   );

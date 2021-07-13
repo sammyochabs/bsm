@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { archiveImages } from "../utils";
 import styles from "../styles/archive.module.css";
-import Image from "next/image";
+import Cookie from "js-cookie";
+import ImageComp from "./ImageComp";
 
-export default function Archive() {
+export default function Archive({ imagesUrl }) {
+  useEffect(() => {
+    if (!Cookie.get("imagesUrl")) {
+      Cookie.set("imagesUrl", archiveImages);
+    }
+  }, []);
   return (
-    <Col className="mt-5 mr-4 mb-3">
+    <Col md={8} className="mt-5 mb-3">
       <Row>
-        {archiveImages.map((image, key) => {
+        {imagesUrl.map((image, key) => {
           return (
             <Col key={key} md={4} className={styles.imageColumn}>
-              <Image
-                width="400"
-                height="400"
-                className={styles.archiveImage}
-                src={`/${image.imageUrl}`}
-                alt=""
-              />
+              <ImageComp image={image} />
             </Col>
           );
         })}

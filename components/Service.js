@@ -6,7 +6,6 @@ export default function Service({ head, content }) {
   return (
     <div className={styles.container}>
       <div className="mt-2">
-        {/* <i className="fas fa-arrow-right"></i> */}
         <VscArrowRight size="30" />
       </div>
       <div className="d-flex flex-column align-items-start">
