@@ -6,12 +6,12 @@ import Link from "next/link";
 const Footer = () => {
   return (
     <>
-      <Row className={`d-none d-md-block ${styles.footer}`}>
+      <Row className={`d-none d-md-flex ${styles.footer} `}>
         <Col className={styles.copyright} md={{ span: "4", offset: "6" }}>
           &copy; BSM 2020
         </Col>
-        <Col className={styles.infoEmail} md={{ span: "2" }}>
-          <div className={`${styles.instaLinkText} ml-5`}>
+        <Col className={`${styles.infoEmail} `} md={{ span: "2" }}>
+          <div className={`${styles.instaLinkText} ml-2`}>
             <span className={styles.instaLink}>
               <Link href={"https://Instagram.com/bs______m"}>@bs____m</Link>
             </span>

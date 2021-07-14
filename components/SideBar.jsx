@@ -19,7 +19,7 @@ const SideBar = ({ currentTab, changeTab }) => {
               width="200"
               height="20"
               className={styles.logo}
-              src={currentTab === "Home" ? "/bsmLogo.png" : "/inactiveLogo.png"}
+              src={currentTab === "Home" ? "/bsmLogo.png" : "/InactiveLogo.png"}
               alt=""
             />
           </Link>

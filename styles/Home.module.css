@@ -140,11 +140,12 @@
 }
 .instaLink {
   font-size: 15px;
+  text-align: right;
 }
 
-.instaLinkText {
+/* .instaLinkText {
   margin-left: 90px;
-}
+} */
 .imageOverlay {
   position: fixed;
   width: 100vw;
@@ -169,4 +170,7 @@
   position: fixed;
   top: 5%;
   right: 5%;
+}
+.infoEmail {
+  padding-left: 35px;
 }
