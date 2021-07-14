@@ -10,10 +10,13 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import { BsList } from "react-icons/bs";
 import MobileNavListItem from "../components/mobileListItem";
+import SingleProduct from "../components/SingleProduct";
 
 const PortfolioPage = () => {
   const [currentTab, setCurrentTab] = useState("Archive");
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showProduct, setShowProduct] = useState(false);
+  const [product, setProduct] = useState("");
 
   const toggleSidebar = () => {
     setShowSidebar((showSidebar) => !showSidebar);
@@ -26,6 +29,11 @@ const PortfolioPage = () => {
 
   return (
     <Fragment>
+      {showProduct ? (
+        <SingleProduct image={product} setShowProduct={setShowProduct} />
+      ) : (
+        ""
+      )}
       {showSidebar && (
         <div onClick={toggleSidebar} className={styles.overlay}></div>
       )}
@@ -84,7 +92,12 @@ const PortfolioPage = () => {
       <Header />
       <Row className="pl-4">
         <SideBar currentTab={currentTab} changeTab={changeTab} />
-        <Archive />
+        <Archive
+          product={product}
+          setProduct={setProduct}
+          setShowProduct={setShowProduct}
+          showProduct={showProduct}
+        />
       </Row>
       <Footer />
     </Fragment>
