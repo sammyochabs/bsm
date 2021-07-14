@@ -13,6 +13,7 @@ import MobileNavListItem from "../components/mobileListItem";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 export default function Home() {
   const [currentTab, setCurrentTab] = useState("Home");
@@ -28,6 +29,9 @@ export default function Home() {
   };
   return (
     <Fragment>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Container fluid className="pt-1 d-none d-md-block">
         <Header />
         <Row>
